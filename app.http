@@ -1,0 +1,41 @@
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "n",
+  "name": "Naga",
+  "password": "na4",
+  "gender": "female",
+  "location": "hindupur"
+}
+###
+
+GET http://localhost:3000/
+###
+
+POST http://localhost:3000/todoUsers
+Content-Type: application/json
+
+
+{"id":60,"first_name":"Robinett","last_name":"Oolahan","email":"roolahan1n@globo.com","gender":"Female","avatar":"https://robohash.org/estestquia.png?size=50x50&set=set1","domain":"IT","available":false}
+
+
+
+###
+
+DELETE http://localhost:3000/delete/
+###
+
+GET http://localhost:3000/fetch
+###
+
+GET http://localhost:3000/user/Robin
+###
+
+GET http://localhost:3000/users/
+###
+
+PUT http://localhost:3000/users/:60
+Content-Type: application/json
+
+{"first_name":"Robinett","last_name":"Oolahan","email":"roolahan1n@globo.com","gender":"Female","avatar":"https://robohash.org/estestquia.png?size=50x50&set=set1","domain":"IT","available":false}
