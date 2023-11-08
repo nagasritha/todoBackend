@@ -177,7 +177,13 @@ app.get("/user/:name", async (request, response) => {
 
 //filtered data
 app.get("/users/", async (request, response) => {
-  const { domain = "", gender = "", available = "" } = request.query;
+  const {
+    domain = "",
+    gender = "",
+    available = "",
+    limit = 20,
+    offset = 0,
+  } = request.query;
   let query = null;
   console.log(domain, gender, available);
   if (gender !== "" && domain !== "" && available !== "") {
@@ -195,7 +201,7 @@ app.get("/users/", async (request, response) => {
   } else if (available !== "") {
     query = `SELECT * FROM todo WHERE available LIKE ${available}`;
   } else {
-    query = `SELECT * FROM todo`;
+    query = `SELECT * FROM todo limit ${limit} offset ${offset}`;
   }
   const fetchedData = await database.all(query);
   response.send(fetchedData);
