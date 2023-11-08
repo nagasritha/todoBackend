@@ -201,7 +201,7 @@ app.get("/users/", async (request, response) => {
   } else if (available !== "") {
     query = `SELECT * FROM todo WHERE available LIKE ${available}`;
   } else {
-    query = `SELECT * FROM todo limit ${limit} offset ${offset}`;
+    query = `SELECT * FROM todo`;
   }
   const fetchedData = await database.all(query);
   response.send(fetchedData);
@@ -210,6 +210,7 @@ app.get("/users/", async (request, response) => {
 //updates Data
 app.put("/users/:id", async (request, response) => {
   const { id } = request.params;
+  console.log(id);
   const {
     first_name,
     last_name,
@@ -229,7 +230,8 @@ app.put("/users/:id", async (request, response) => {
  gender='${gender}',
  avatar='${avatar}',
  domain='${domain}',
- available=${available}`;
+ available=${available}
+ WHERE id=${id}`;
   const execute = await database.run(query);
   response.send("updated Successfully");
 });
