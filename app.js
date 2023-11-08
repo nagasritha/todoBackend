@@ -201,7 +201,7 @@ app.get("/users/", async (request, response) => {
   } else if (available !== "") {
     query = `SELECT * FROM todo WHERE available LIKE ${available}`;
   } else {
-    query = `SELECT * FROM todo`;
+    query = `SELECT * FROM todo limit ${limit} offset ${offset}`;
   }
   const fetchedData = await database.all(query);
   response.send(fetchedData);
