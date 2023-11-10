@@ -187,19 +187,19 @@ app.get("/users/", async (request, response) => {
   let query = null;
   console.log(domain, gender, available);
   if (gender !== "" && domain !== "" && available !== "") {
-    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND gender IN (${gender}) AND available LIKE ${available}`;
+    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND gender IN (${gender}) AND available LIKE ${available} LIMIT ${limit} OFFSET ${offset}`;
   } else if (gender !== "" && domain !== "") {
-    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND gender IN (${gender})`;
+    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND gender IN (${gender}) LIMIT ${limit} OFFSET ${offset}`;
   } else if (domain !== "" && available !== "") {
-    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND available LIKE ${available}`;
+    query = `SELECT * FROM todo WHERE domain IN (${domain}) AND available LIKE ${available} LIMIT ${limit} OFFSET ${offset}`;
   } else if (gender !== "" && available !== "") {
-    query = `SELECT * FROM todo WHERE gender IN (${gender}) and available LIKE ${available}`;
+    query = `SELECT * FROM todo WHERE gender IN (${gender}) and available LIKE ${available} LIMIT ${limit} OFFSET ${offset}`;
   } else if (domain !== "") {
-    query = `SELECT * FROM todo WHERE domain IN (${domain})`;
+    query = `SELECT * FROM todo WHERE domain IN (${domain}) limit ${limit} offset ${offset}`;
   } else if (gender !== "") {
-    query = `SELECT * FROM todo WHERE gender IN (${gender})`;
+    query = `SELECT * FROM todo WHERE gender IN (${gender}) LIMIT ${limit} OFFSET ${offset}`;
   } else if (available !== "") {
-    query = `SELECT * FROM todo WHERE available LIKE ${available}`;
+    query = `SELECT * FROM todo WHERE available LIKE ${available} LIMIT ${limit} OFFSET ${offset}`;
   } else {
     query = `SELECT * FROM todo limit ${limit} offset ${offset}`;
   }

@@ -32,7 +32,7 @@ GET http://localhost:3000/fetch
 GET http://localhost:3000/user/Robin
 ###
 
-GET http://localhost:3000/users/
+GET http://localhost:3000/users/?domain='Sales','Finance'&limit=20&offset=0
 ###
 
 PUT http://localhost:3000/users/3
