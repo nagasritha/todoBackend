@@ -16,26 +16,18 @@ GET http://localhost:3000/
 POST http://localhost:3000/todoUsers
 Content-Type: application/json
 
-
-{"id":60,"first_name":"Robinett","last_name":"Oolahan","email":"roolahan1n@globo.com","gender":"Female","avatar":"https://robohash.org/estestquia.png?size=50x50&set=set1","domain":"IT","available":false}
-
-
+{"first_name":"Pepillo","last_name":"O'Flynn","email":"poflynn3a@ftc.gov","gender":"Male","avatar":"https://robohash.org/placeatnatussit.png?size=50x50&set=set1","domain":"Finance","available":false}
 
 ###
-
-DELETE http://localhost:3000/delete/
+DELETE http://localhost:3000/delete/60
 ###
 
-GET http://localhost:3000/fetch
-###
 
 GET http://localhost:3000/user/Robin
 ###
 
-GET http://localhost:3000/users/?domain='Sales','Finance'&limit=20&offset=0
+GET http://localhost:3000/users/?limit=100&offset=110
 ###
 
 PUT http://localhost:3000/users/3
 Content-Type: application/json
-
-{"first_name":"Honoria","last_name":"Caughte","email":"hcaughte1@google.com.br","gender":"Female","avatar":"https://robohash.org/temporibusporrolaboriosam.png?size=50x50&set=set1","domain":"Finance","available":true}
