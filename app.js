@@ -114,6 +114,13 @@ app.post("/todoUsers", async (request, response) => {
   }
 });
 
+//to get the data from the selfGroup
+app.get("/usersGroup", async (request, response) => {
+  const query = `SELECT * FROM selfGroup`;
+  const details = await database.all(query);
+  response.send(details);
+});
+
 //to add the user into the group
 app.post("/usersGroup", async (request, response) => {
   const {
@@ -129,14 +136,14 @@ app.post("/usersGroup", async (request, response) => {
   const lastName = last_name;
   console.log(firstName, lastName, email, gender, avatar, domain, available);
   const query1 = `
-  SELECT * FROM todo WHERE email='${email}'`;
+  SELECT * FROM selfGroup WHERE email='${email}'`;
   const resolve = await database.get(query1);
   if (resolve !== undefined) {
     response.status(400);
     response.send(resolve);
   } else {
     const insertionQuery = `
-      INSERT INTO todo(first_name,last_name,email,gender,avatar,domain,available)
+      INSERT INTO selfGroup(first_name,last_name,email,gender,avatar,domain,available)
       VALUES(
           '${firstName}','${lastName}','${email}','${gender}','${avatar}','${domain}',${available})
       
@@ -160,7 +167,7 @@ app.delete("/delete/:id", async (request, response) => {
 app.delete("/deleteFromGroup/:id", async (request, response) => {
   const { id } = request.params;
   const query = `
-   DELETE FROM 
+   DELETE FROM selfGroup
    WHERE id=${id}`;
   await database.run(query);
   response.send("deleted successfully");

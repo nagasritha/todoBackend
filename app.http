@@ -13,15 +13,17 @@ Content-Type: application/json
 GET http://localhost:3000/
 ###
 
-POST http://localhost:3000/todoUsers
+POST http://localhost:3000/usersGroup
 Content-Type: application/json
 
-{"first_name":"Pepillo","last_name":"O'Flynn","email":"poflynn3a@ftc.gov","gender":"Male","avatar":"https://robohash.org/placeatnatussit.png?size=50x50&set=set1","domain":"Finance","available":false}
+{"first_name":"Rancell","last_name":"Petracchi","email":"rpetracchi3c@hubpages.com","gender":"Bigender","avatar":"https://robohash.org/ullamsaepemollitia.png?size=50x50&set=set1","domain":"Business Development","available":false}
 
 ###
-DELETE http://localhost:3000/delete/60
+DELETE http://localhost:3000/delete/
 ###
 
+DELETE http://localhost:3000/deleteFromGroup/1
+###
 
 GET http://localhost:3000/user/Robin
 ###
