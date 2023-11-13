@@ -3,14 +3,13 @@ const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const path = require("path");
 const bcrypt = require("bcrypt");
-const cors = require("cors");
 
 const databasePath = path.join(__dirname, "userData.db");
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
 let database = null;
 
 const initializeDbAndServer = async () => {
@@ -140,7 +139,7 @@ app.post("/usersGroup", async (request, response) => {
   const resolve = await database.get(query1);
   if (resolve !== undefined) {
     response.status(400);
-    response.send(resolve);
+    response.send({ message: "user already exists" });
   } else {
     const insertionQuery = `
       INSERT INTO selfGroup(first_name,last_name,email,gender,avatar,domain,available)
@@ -149,7 +148,7 @@ app.post("/usersGroup", async (request, response) => {
       
       `;
     const dataResponse = await database.run(insertionQuery);
-    response.send("added successfully");
+    response.send({ message: "added successfully" });
   }
 });
 
